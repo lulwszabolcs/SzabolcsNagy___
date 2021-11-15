@@ -1,0 +1,16 @@
+Router(config)#host terem201
+terem201(config)#int Gig 0/0
+terem201(config-if)#ip address 192.168.1.1 255.255.255.0
+terem201(config-if)#no shutdown
+
+%LINK-5-CHANGED: Interface FastEthernet0/0, changed state to up
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to up
+terem201(config-if)#exit
+terem201(config)#ip dhcp pool tanterem
+terem201(dhcp-config)#default 192.168.1.1
+terem201(dhcp-config)#net 192.168.1.0 255.255.255.0
+terem201(dhcp-config)#exit
+terem201(config)#ip dhcp exc 192.168.1.21 192.168.1.254
+terem201#copy run start
+Destination filename [startup-config]? 
+Building configuration...
