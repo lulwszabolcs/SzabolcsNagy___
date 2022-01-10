@@ -1,0 +1,21 @@
+Sw0_1(config)#int vlan1
+Sw0_1(config-if)#ip address 192.168.0.1 255.255.255.0 
+Sw0_1(config-if)#no shutdown 
+Sw0_1(config-if)#ex
+
+Sw0_1(config)#line vty 0 15
+Sw0_1(config-line)#password damuroland
+Sw0_1(config-line)#login 
+Sw0_1(config-line)#ex
+
+
+Telnet Router:
+R1(config)#
+R1(config)#line vty 0 15
+R1(config-line)#password tiktok
+R1(config-line)#login
+R1(config-line)#
+Router
+192.168.1.1
+PC
+192.168.1.2
