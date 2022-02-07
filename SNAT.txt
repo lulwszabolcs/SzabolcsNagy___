@@ -1,0 +1,7 @@
+Router(config)# ip nat inside source static 172.16.0.3 50.0.0.2
+Router(config)#int Gig0/1
+Router(config-if)#ip nat inside
+Router(config-if)#exit
+Router(config)#int Gig0/0
+Router(config-if)#ip nat outside
+Router(config-if)#exit

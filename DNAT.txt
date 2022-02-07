@@ -1,0 +1,28 @@
+﻿privát hálózat
+	Hálózat LAN 192.168.1.0 .2-.6ig  öt gép
+	router inside 192.168.1.1
+publikus hálózat
+	router outside 40.0.0.1
+	laptop 40.0.0.254
+
+Konfiguráld a DNAT-ot!
+
+
+R1(config)# int g0/0
+R1(config-if)# ip add 192.168.1.1 255.255.255.0
+ 
+R1(config)# int g0/1
+R1(config-if)# ip add 40.0.0.1 255.255.255.0
+ 
+R1(config)# ip nat pool DNAT 40.0.0.2 40.0.0.4 netmask 255.255.255.0
+R1(config)# access-list 1 permit 192.168.1.0 0.0.0.255
+R1(config)# ip nat inside source list 1 pool DNAT
+ 
+R1(config)# int g0/0
+R1(config-if)# ip nat inside
+ 
+R1(config)#int g0/1
+R1(config-if)# ip nat outside
+
+Teszt:
+szerverről végigpingeled az öt gépet, figyeled mi adja a Replyt!
